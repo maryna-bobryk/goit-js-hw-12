@@ -126,6 +126,7 @@ function scrollPage() {
   });
 }
 
+//=================================================
 // function getCardHight() {
 //   let elem = refs.gallery.firstElementChild;
 //   let rect = elem.getBoundingClientRect();
