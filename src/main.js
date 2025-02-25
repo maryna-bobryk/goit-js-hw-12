@@ -48,8 +48,10 @@ refs.form.addEventListener('submit', async e => {
   params.page = 1;
 
   if (!params.q) {
+    refs.gallery.innerHTML = '';
     hideLoader();
     showErrorMessage('Please enter a search term!');
+    hideLoadMoreBtn();
     return;
   }
   try {
