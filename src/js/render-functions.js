@@ -48,3 +48,9 @@ export function renderGallery(images) {
   refs.gallery.innerHTML = markup;
   lightbox.refresh();
 }
+
+export function addRenderGallery(images) {
+  const markup = images.map(imageTemplate).join('');
+  refs.gallery.insertAdjacentHTML('beforeend', markup);
+  lightbox.refresh();
+}

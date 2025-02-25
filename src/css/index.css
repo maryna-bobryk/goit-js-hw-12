@@ -103,6 +103,11 @@ img {
   background-color: #6c8cff;
 }
 
+.load-btn {
+  display: block;
+  margin: 0 auto;
+  width: 125px;
+}
 /* ============== Styles for Mobile devices =============== */
 
 .container {
