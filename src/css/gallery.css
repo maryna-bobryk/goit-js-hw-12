@@ -12,6 +12,7 @@ img {
   flex-wrap: wrap;
   gap: 24px;
   list-style: none;
+  margin-bottom: 10px;
 }
 
 .gallery-item {

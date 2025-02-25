@@ -46,10 +46,9 @@ refs.form.addEventListener('submit', async e => {
 
   params.q = e.target.elements.image.value.trim();
   params.page = 1;
-
+  hideLoader();
   if (!params.q) {
     refs.gallery.innerHTML = '';
-    hideLoader();
     showErrorMessage('Please enter a search term!');
     hideLoadMoreBtn();
     return;
