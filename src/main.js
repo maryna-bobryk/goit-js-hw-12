@@ -46,17 +46,19 @@ refs.form.addEventListener('submit', async e => {
 
   params.q = e.target.elements.image.value.trim();
   params.page = 1;
-  hideLoader();
+
   if (!params.q) {
     refs.gallery.innerHTML = '';
-    showErrorMessage('Please enter a search term!');
+    hideLoader();
     hideLoadMoreBtn();
+    showErrorMessage('Please enter a search term!');
     return;
   }
   try {
     const images = await getImage(params.q, params.page);
     if (images.hits.length === 0) {
       hideLoader();
+      hideLoadMoreBtn();
       showErrorMessage('No images found. Try a different search');
       return;
     }
@@ -67,7 +69,7 @@ refs.form.addEventListener('submit', async e => {
     showErrorMessage('Oops! Something went wrong');
     console.error(err);
   }
-
+  // checkPageStatus();
   hideLoader();
 });
 
