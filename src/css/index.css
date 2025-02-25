@@ -38,16 +38,10 @@ img {
   height: auto;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
 .form {
   display: flex;
-  column-gap: 8px;
+  flex-direction: column;
+  gap: 8px;
   justify-content: center;
   align-items: center;
   margin-top: 35px;
@@ -115,13 +109,24 @@ img {
   min-width: 320px;
   max-width: 375px;
   margin: 0 auto;
-  padding: 0 16px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
   .container {
     max-width: 768px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .form {
+    flex-direction: row;
+    gap: 8px;
   }
 }
 /* Styles for Desktop devices */
