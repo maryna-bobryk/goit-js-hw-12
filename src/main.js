@@ -52,22 +52,21 @@ refs.form.addEventListener('submit', async e => {
     showErrorMessage('Please enter a search term!');
     return;
   }
-
   try {
     const images = await getImage(params.q, params.page);
     if (images.hits.length === 0) {
       hideLoader();
-      showErrorMessage();
+      showErrorMessage('No images found. Try a different search');
       return;
     }
     renderGallery(images.hits);
     params.total = images.totalHits;
     checkPageStatus();
   } catch (err) {
-    hideLoader();
-    showErrorMessage('Oops! Something went wrong. Please try again later.');
+    showErrorMessage('Oops! Something went wrong');
     console.error(err);
   }
+
   hideLoader();
 });
 
@@ -80,15 +79,15 @@ refs.btnLoadMore.addEventListener('click', async () => {
     const images = await getImage(params.q, params.page);
     addRenderGallery(images.hits);
     checkPageStatus();
+    scrollPage();
   } catch (err) {
-    hideLoader();
-    showErrorMessage('Oops! Something went wrong. Please try again later.');
+    showErrorMessage('Oops! Something went wrong');
     console.error(err);
   }
   hideLoader();
 });
 
-//======================= BUTTONS SHOW-HIDE ==========================
+//======================= SHOW-HIDE ==========================
 
 function showLoader() {
   refs.loader.classList.remove('hidden');
@@ -115,3 +114,36 @@ function checkPageStatus() {
     showLoadMoreBtn();
   }
 }
+
+function scrollPage() {
+  let elem = refs.gallery.firstElementChild;
+  let rect = elem.getBoundingClientRect();
+  let height = rect.height;
+
+  scrollBy({
+    top: height * 2,
+    behavior: 'smooth',
+  });
+}
+
+// function getCardHight() {
+//   let elem = refs.gallery.firstElementChild;
+//   let rect = elem.getBoundingClientRect();
+//   return rect.height * 2;
+// }
+
+// let elem = document.querySelector('div');
+// let rect = elem.getBoundingClientRect();
+// for (const key in rect) {
+//   if (typeof rect[key] !== 'function') {
+//     let para = document.createElement('p');
+//     para.textContent = `${key} : ${rect[key]}`;
+//     document.body.appendChild(para);
+//   }
+// }
+
+// window.scrollBy({
+//   top: 100,
+//   left: 100,
+//   behavior: 'smooth',
+// });
